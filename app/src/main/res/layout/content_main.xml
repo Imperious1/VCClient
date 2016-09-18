@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:background="@drawable/custom_borde"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Status: CONNECTED" />
+
+    <Button
+        android:id="@+id/btn_raise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_lower"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:onClick="onRaisePress"
+        android:text="Raise Volume" />
+
+    <Button
+        android:id="@+id/btn_lower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_raise"
+        android:layout_alignStart="@+id/btn_raise"
+        android:layout_centerVertical="true"
+        android:onClick="onLowerPress"
+        android:text="LOWER VOLUME" />
+
+    <Button
+        android:id="@+id/btn_mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_lower"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:onClick="onMutePress"
+        android:text="MUTE" />
+
+
+</RelativeLayout>
+
+
+

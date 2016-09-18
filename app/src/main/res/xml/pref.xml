@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Connection settings">
+
+        <SwitchPreference
+            android:key="auto_connect"
+            android:summary="Toggles automatic connection to VCServer with default port"
+            android:title="Auto connect" />
+
+        <SwitchPreference
+            android:key="auto_reconnect"
+            android:summary="Toggles automatic reconnection to VCServer with default port"
+            android:title="Auto reconnect" />
+
+        <EditTextPreference
+            android:inputType="number"
+            android:key="default_port"
+            android:summary="Set the default port for connection"
+            android:title="Default port" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Volume settings">
+
+        <ListPreference
+            android:entries="@array/increment_entries"
+            android:entryValues="@array/increment_values"
+            android:key="increment"
+            android:summary="Amount to increment volume by"
+            android:title="Increment volume by" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
