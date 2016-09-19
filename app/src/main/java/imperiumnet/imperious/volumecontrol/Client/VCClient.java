@@ -20,9 +20,8 @@ public class VCClient extends Client {
     boolean permitted;
 
     public VCClient(int port, Context context) throws IOException {
-        super(port, context);
+        super(port);
         this.context = context;
-        this.permitted = true;
     }
 
     public void connect() {
@@ -97,10 +96,6 @@ public class VCClient extends Client {
 
     public boolean isClosed() {
         return socket == null || socket.isClosed();
-    }
-
-    public boolean isSocketNull() {
-        return socket == null;
     }
 
     public void killKeepAlive() {

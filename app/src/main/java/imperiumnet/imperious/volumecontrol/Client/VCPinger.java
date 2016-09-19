@@ -45,7 +45,7 @@ public class VCPinger {
                             pingServer(socket);
                         }
                     } catch (Exception e) {
-                        System.out.println("exception");
+                        System.out.println("exception in pinger");
                         e.printStackTrace();
                     }
                 }

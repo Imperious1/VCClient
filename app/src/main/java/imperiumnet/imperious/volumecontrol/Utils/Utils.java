@@ -45,7 +45,7 @@ public class Utils {
     }
 
     public static void sendData(final Socket socket, final int increment, final int request) {
-        if (socket != null)
+        if (socket != null && socket.isConnected())
             new Thread(new Runnable() {
                 @Override
                 public void run() {

@@ -1,7 +1,5 @@
 package imperiumnet.imperious.volumecontrol.Client.base;
 
-import android.content.Context;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -13,11 +11,9 @@ public abstract class Client {
 
     protected Socket socket;
     protected int port;
-    Context context;
 
-    public Client(int port, Context context) {
+    public Client(int port) {
         this.port = port;
-        this.context = context;
     }
 
     protected void connect() {
@@ -42,5 +38,6 @@ public abstract class Client {
         return socket.isConnected();
     }
 
+    //What to do after connection established
     public abstract void onTaskComplete();
 }

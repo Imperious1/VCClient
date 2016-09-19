@@ -1,12 +1,8 @@
 package imperiumnet.imperious.volumecontrol.activities;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -167,11 +163,6 @@ public class MainActivity extends AppCompatActivity implements OnTaskCompletedLi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        try {
-            unregisterReceiver(br);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
         System.out.println("ondestroy called");
     }
 
@@ -179,10 +170,9 @@ public class MainActivity extends AppCompatActivity implements OnTaskCompletedLi
     protected void onStop() {
         super.onStop();
         try {
-            unregisterReceiver(br);
             if (client != null)
                 client.disconnectByUserRequest();
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("onstop called");
@@ -191,22 +181,6 @@ public class MainActivity extends AppCompatActivity implements OnTaskCompletedLi
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(br = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                final ConnectivityManager connMgr = (ConnectivityManager) context
-                        .getSystemService(Context.CONNECTIVITY_SERVICE);
-                final android.net.NetworkInfo wifi = connMgr
-                        .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-                if (wifi.isConnected()) {
-                    if (client != null) {
-                        Snackbar.make(findViewById(R.id.coordinator), "Connection restored, reconnecting...", Snackbar.LENGTH_LONG).show();
-                        if (!client.isKeptAlive())
-                            client.keepAlive();
-                    }
-                }
-            }
-        }, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
         System.out.println("onresume called");
     }
 
